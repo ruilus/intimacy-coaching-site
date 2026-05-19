@@ -444,9 +444,21 @@ function AppStyles() {
       }
 
       .grid-3 {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+      .services-grid {
+        gap: 10px;
+      }
+
+      .services-card {
+        padding: 16px;
+      }
+
+      .services-card .card-top {
+        margin-bottom: 12px;
       }
 
       .grid-2 {
@@ -468,7 +480,7 @@ function AppStyles() {
         border-radius: var(--radius);
         box-shadow: var(--shadow);
         backdrop-filter: blur(10px);
-        padding: 22px;
+        padding: 18px;
         transition: 0.18s ease;
       }
 
@@ -565,6 +577,26 @@ function AppStyles() {
         flex-direction: column;
         gap: 14px;
       }
+        .page-shell-top-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.page-shell-top-left .page-shell-title {
+  text-align: left;
+}
+
+.page-shell-top-left .page-shell-subtitle {
+  text-align: left;
+}
+  .services-left {
+  align-items: flex-start;
+}
+
+.services-left .section-title,
+.services-left .section-text {
+  text-align: left;
+}
 
       .page-shell-title {
         margin: 0;
@@ -807,13 +839,15 @@ function Button({
 function Card({
   children,
   onClick,
+  className,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
+  className?: string;
 }) {
   return (
     <div
-      className={cls("card", onClick && "clickable")}
+      className={cls("card", onClick && "clickable", className)}
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
@@ -855,14 +889,16 @@ function PageShell({
   title,
   subtitle,
   children,
+  align = "center",
 }: {
   title: string;
   subtitle: string;
   children: React.ReactNode;
+  align?: "center" | "left";
 }) {
   return (
     <div className="page-stack">
-      <div className="page-shell-top">
+      <div className={align === "left" ? "page-shell-top page-shell-top-left" : "page-shell-top"}>
         <div className="eyebrow">A gentle beginning</div>
         <h1 className="page-shell-title">{title}</h1>
         <div className="page-shell-subtitle">{subtitle}</div>
@@ -1230,14 +1266,18 @@ function AboutPage({ goTo }: { goTo: (page: PageId) => void }) {
 function ServicesPage({ goTo }: { goTo: (page: PageId) => void }) {
   return (
     <div className="page-stack">
-      <SectionTitle
-        eyebrow="Work with me"
-        title="Services for people who want more truth, more ease, and more real connection."
-        text="Whether you are coming alone, with a partner, or through the doorway of photography, each offering is designed to support more honesty, more connection, and more aliveness in the way you love."
-      />
-      <div className="grid-3">
+      <div className="section services-left">
+  <div className="eyebrow">Work with me</div>
+  <h2 className="section-title">
+    Services for people who want more truth, more ease, and more real connection.
+  </h2>
+  <div className="section-text">
+    Whether you are coming alone, with a partner, or through the doorway of photography, each offering is designed to support more honesty, more connection, and more aliveness in the way you love.
+  </div>
+</div>
+      <div className="grid-3 services-grid">
         {serviceCards.map((item) => (
-          <Card key={item.id} onClick={() => goTo(item.id)}>
+          <Card key={item.id} className="services-card" onClick={() => goTo(item.id)}>
             <div className="card-top">
               <div className="pill">•</div>
             </div>
@@ -1632,14 +1672,15 @@ export default function App() {
           </PageShell>
         );
       case "services":
-        return (
-          <PageShell
-            title="Work With Me"
-            subtitle="Choose the kind of support that feels closest to what you need right now."
-          >
-            <ServicesPage goTo={navigateTo} />
-          </PageShell>
-        );
+  return (
+    <PageShell
+      title="Work With Me"
+      subtitle="Choose the kind of support that feels closest to what you need right now."
+      align="left"
+    >
+      <ServicesPage goTo={navigateTo} />
+    </PageShell>
+  );
       case "coaching":
         return (
           <PageShell
