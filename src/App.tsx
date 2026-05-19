@@ -1557,7 +1557,7 @@ function InsightsPage({ goTo }: { goTo: (page: PageId) => void }) {
   );
 }
 
-function ContactPage({ goTo }: { goTo: (page: PageId) => void }) {
+function ContactPage() {
   return (
     <div className="split">
       <div className="page-stack">
@@ -1700,7 +1700,7 @@ export default function App() {
             title="Contact"
             subtitle="Reach out when you are ready. You do not need perfect words to begin."
           >
-            <ContactPage goTo={navigateTo} />
+            <ContactPage />
           </PageShell>
         );
       default: {
