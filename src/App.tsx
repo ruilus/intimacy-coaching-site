@@ -1793,7 +1793,7 @@ export default function App() {
             <div className="footer-copy">
               Somatic, relational, and intimacy-centered support for individuals and
               couples who want more truth, more tenderness, and more ease in the way
-              they love.
+              they relate.
             </div>
           </div>
         </footer>
