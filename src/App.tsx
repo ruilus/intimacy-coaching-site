@@ -320,12 +320,15 @@ function AppStyles() {
       }
 
       .hero {
-        min-height: 76vh;
+        min-height: 64vh;
         display: grid;
         grid-template-columns: 1.1fr 0.9fr;
-        gap: 44px;
+        gap: 36px;
         align-items: center;
-        padding: 8px 4px 0;
+        padding: 0 4px 0;
+      }
+      .hero > .page-stack {
+        gap: 18px;
       }
 
       .eyebrow {
@@ -700,32 +703,42 @@ function AppStyles() {
       }
 
       .footer {
-        margin-top: 42px;
+        margin-top: 32px;
         background: rgba(255,255,255,0.78);
         border: 1px solid rgba(255,255,255,0.7);
         border-radius: 26px;
         box-shadow: var(--shadow);
-        padding: 22px;
+        padding: 18px 20px;
       }
 
       .footer-row {
         display: flex;
-        gap: 18px;
+        gap: 16px;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-left {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
       }
 
       .footer-title {
-        font-weight: 700;
+        font-weight: 600;
         color: #221d1d;
-        margin-bottom: 4px;
+        margin-bottom: 2px;
+        font-size: 15px;
+        line-height: 1.25;
       }
 
       .footer-copy {
         max-width: 620px;
         color: var(--muted);
         font-size: 13px;
-        line-height: 1.8;
+        line-height: 1.72;
+        min-width: 0;
       }
 
       @media (max-width: 980px) {
@@ -1096,9 +1109,11 @@ function HomePage({ goTo }: { goTo: (page: PageId) => void }) {
 
         <div className="hero-art">
           <div className="hero-art-inner">
-            A clean, soft hero artwork placeholder.
-            <br />
-            Once the site is running, we can rebuild the more detailed romantic sketch version.
+            <img
+              src="/images/hero-sketch-clean.svg"
+              alt="Elegant intimate line drawing"
+              style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
+            />
           </div>
         </div>
       </section>
@@ -1269,7 +1284,7 @@ function ServicesPage({ goTo }: { goTo: (page: PageId) => void }) {
       <div className="section services-left">
   <div className="eyebrow">Work with me</div>
   <h2 className="section-title">
-    Services for people who want more truth, more ease, and more real connection.
+    Support for people who want more honesty, more closeness, and more ease in connection.
   </h2>
   <div className="section-text">
     Whether you are coming alone, with a partner, or through the doorway of photography, each offering is designed to support more honesty, more connection, and more aliveness in the way you love.
@@ -1769,7 +1784,7 @@ export default function App() {
 
         <footer className="footer">
           <div className="footer-row">
-            <div>
+            <div className="footer-left">
               <div className="footer-title">
                 {brand.name} • {brand.title}
               </div>
