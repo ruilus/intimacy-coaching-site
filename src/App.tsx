@@ -1284,10 +1284,10 @@ function ServicesPage({ goTo }: { goTo: (page: PageId) => void }) {
       <div className="section services-left">
   <div className="eyebrow">Work with me</div>
   <h2 className="section-title">
-    Support for people who want more honesty, more closeness, and more ease in connection.
+    Services for people who want more truth, more ease, and more real connection.
   </h2>
   <div className="section-text">
-    Whether you are coming alone, with a partner, or through the doorway of photography, each offering is designed to support more honesty, more connection, and more aliveness in the way you love.
+    Whether you are coming alone, with a partner, or through the doorway of photography, each offering is designed to help create more honesty, more connection, and more aliveness in the way you love.
   </div>
 </div>
       <div className="grid-3 services-grid">
